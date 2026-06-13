@@ -61,13 +61,14 @@ if uploaded_file:
 
         area = cv2.contourArea(contour)
 
-        if area > 1000:
+        if area > 6800:
 
             total_damage_area += area
 
             x, y, w, h = cv2.boundingRect(contour)
+            if y < img.shape[0] * 0.3:
 
-            cv2.rectangle(
+             cv2.rectangle(
                 result_img,
                 (x, y),
                 (x + w, y + h),
