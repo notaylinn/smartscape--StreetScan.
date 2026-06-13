@@ -21,6 +21,10 @@ if uploaded_file:
     image = Image.open(uploaded_file).convert("RGB")
 
     img = np.array(image)
+    height = img.shape[0]
+
+    # Focus on lower road section
+    img = img[int(height * 0.55):height, :]
 
     gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
 
@@ -28,7 +32,7 @@ if uploaded_file:
 
     _, mask = cv2.threshold(
         blur,
-        90,
+        45,
         255,
         cv2.THRESH_BINARY_INV
     )
@@ -61,30 +65,31 @@ if uploaded_file:
 
         area = cv2.contourArea(contour)
 
-        if area > 6800:
+        if area > 600:
 
             total_damage_area += area
 
             x, y, w, h = cv2.boundingRect(contour)
+
             if y < img.shape[0] * 0.3:
 
-             cv2.rectangle(
-                result_img,
-                (x, y),
-                (x + w, y + h),
-                (255, 0, 0),
-                4
-            )
+                cv2.rectangle(
+                    result_img,
+                    (x, y),
+                    (x + w, y + h),
+                    (255, 0, 0),
+                    4
+                )
 
-            cv2.putText(
-                result_img,
-                "DEFECT",
-                (x, y - 10),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.8,
-                (255, 0, 0),
-                2
-            )
+                cv2.putText(
+                    result_img,
+                    "DEFECT",
+                    (x, y - 10),
+                    cv2.FONT_HERSHEY_SIMPLEX,
+                    0.8,
+                    (255, 0, 0),
+                    2
+                )
 
     image_area = img.shape[0] * img.shape[1]
 
@@ -133,22 +138,11 @@ if uploaded_file:
         )
 
         if severity == "HIGH":
-
-            st.error(
-                "Critical road defect detected"
-            )
-
+            st.error("Critical road defect detected")
         elif severity == "MEDIUM":
-
-            st.warning(
-                "Moderate road defect detected"
-            )
-
+            st.warning("Moderate road defect detected")
         else:
-
-            st.success(
-                "Road condition appears acceptable"
-            )
+            st.success("Road condition appears acceptable")
 
     st.divider()
 
@@ -262,22 +256,11 @@ if uploaded_file:
         st.write(f"Severity Level: {severity}")
 
         if severity == "HIGH":
-
-            st.write(
-                "Recommended Action: Immediate repair and safety inspection."
-            )
-
+            st.write("Recommended Action: Immediate repair and safety inspection.")
         elif severity == "MEDIUM":
-
-            st.write(
-                "Recommended Action: Scheduled maintenance."
-            )
-
+            st.write("Recommended Action: Scheduled maintenance.")
         else:
-
-            st.write(
-                "Recommended Action: Routine monitoring."
-            )
+            st.write("Recommended Action: Routine monitoring.")
 
         st.write(
             f"Maintenance Cost Index: {estimated_cost}"
@@ -287,24 +270,7 @@ if uploaded_file:
             f"Estimated Repair Complexity: {severity}"
         )
 
-        if severity == "HIGH":
-
-            st.write(
-                "Suggested Repair Timeframe: Within 7 days."
-            )
-
-        elif severity == "MEDIUM":
-
-            st.write(
-                "Suggested Repair Timeframe: Within 30 days."
-            )
-
-        else:
-
-            st.write(
-                "Suggested Repair Timeframe: Routine inspection cycle."
-            )
-            st.divider()
+    st.divider()
 
     st.subheader("Municipality Repair Dashboard")
 
@@ -314,19 +280,16 @@ if uploaded_file:
     )
 
     if severity == "HIGH":
-
         risk_index = 90
         priority = "CRITICAL"
         material = "Hot Mix Asphalt"
 
     elif severity == "MEDIUM":
-
         risk_index = 60
         priority = "MEDIUM"
         material = "Cold Asphalt Patch"
 
     else:
-
         risk_index = 20
         priority = "LOW"
         material = "Monitoring Only"
@@ -369,11 +332,6 @@ Repair Priority: {priority}
 Recommended Material: {material}
 
 Estimated Cost: ${estimated_cost}
-
-Suggested Repair Timeframe:
-{('Within 7 Days' if severity == 'HIGH'
-else 'Within 30 Days' if severity == 'MEDIUM'
-else 'Routine Monitoring')}
 """
 
     st.text_area(
