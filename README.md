@@ -74,4 +74,4 @@ The dashboard provides municipal authorities with:
 
 ```bash
 pip install -r requirements.txt
-streamlit run app.py
+streamlit run  main.py
