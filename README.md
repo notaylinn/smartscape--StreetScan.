@@ -69,10 +69,6 @@ The dashboard provides municipal authorities with:
 - Municipal road maintenance planning
 - Smart city infrastructure management
 
-## Future Development
-
-- Machine learning-based defect classification
-- YOLO road defect detection
 
 ## Installation
 
