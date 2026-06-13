@@ -1,97 +1,149 @@
-# StreetScan
+StreetScan
 
-AI-Based Road Defect Detection and Risk Assessment System
+AI-Assisted Road Defect Detection and Maintenance Planning System
 
-## Overview
+Track
 
-StreetScan is a lightweight computer vision application designed to automatically detect road defects from uploaded images and assess their severity.
+Track 1: Smart Mobility & Infrastructure
 
-The system analyses road surface conditions, identifies potential defects, estimates damage severity, and generates a maintenance recommendation report.
+⸻
 
-This solution can support municipalities, road maintenance teams, and infrastructure inspectors by providing a fast and accessible preliminary assessment tool.
+Problem
 
----
+Road defects such as potholes, cracks, and surface deterioration pose significant risks to drivers, increase vehicle maintenance costs, and create challenges for municipalities responsible for infrastructure maintenance.
 
-## Features
+Traditional road inspections are often time-consuming, expensive, and dependent on manual assessment.
 
-- Road image upload
-- Automated defect detection
-- Damage severity classification
-- Visual defect highlighting
-- Risk assessment generation
-- Inspection report generation
-- User-friendly web interface
+StreetScan aims to provide a fast and accessible AI-assisted solution for identifying road defects and supporting maintenance decision-making.
 
----
+⸻
 
-## Technologies Used
+Solution
 
-- Python
-- Streamlit
-- OpenCV
-- NumPy
-- Pillow
+StreetScan is a computer vision-based road infrastructure assessment system that analyses uploaded road images, detects potential defects, evaluates severity levels, estimates repair costs, and generates maintenance recommendations.
 
----
+The system supports both road users and municipal authorities by providing actionable insights for infrastructure maintenance planning.
 
-## System Workflow
+⸻
+
+Key Features
+
+* Road image upload and analysis
+* Automated defect detection using computer vision
+* Damage severity classification (Low, Medium, High)
+* Visual defect highlighting
+* Risk assessment generation
+* Estimated damaged area calculation
+* Estimated repair cost calculation
+* Maintenance priority assessment
+* Repair material recommendations
+* Driver safety recommendations
+* Location-based reporting (city and address)
+* Automated inspection report generation
+
+⸻
+
+AI Methodology
+
+StreetScan uses an AI-assisted computer vision pipeline:
+
+1. Image preprocessing using OpenCV
+2. Defect region segmentation
+3. Defect area estimation
+4. Damage score calculation
+5. Severity classification
+6. Infrastructure risk assessment
+7. Maintenance recommendation generation
+8. Repair cost estimation
+
+The system combines computer vision techniques with rule-based infrastructure assessment logic to support maintenance planning and decision-making.
+
+⸻
+
+Technologies Used
+
+* Python
+* Streamlit
+* OpenCV
+* NumPy
+* Pillow
+
+⸻
+
+System Workflow
 
 1. Upload a road image.
-2. Image preprocessing is performed.
-3. Potential defect regions are identified.
+2. The image is preprocessed.
+3. Defect regions are detected.
 4. Damage score is calculated.
-5. Severity level is classified.
-6. Risk assessment is generated.
-7. Inspection report is produced.
+5. Severity level is determined.
+6. Repair cost is estimated.
+7. Risk level is assessed.
+8. Repair recommendations are generated.
+9. Inspection report is produced.
 
----
+⸻
 
-## Severity Classification
+Severity Classification
 
-| Damage Score | Severity |
-|-------------|----------|
-| 0–25% | LOW |
-| 26–60% | MEDIUM |
-| 61–100% | HIGH |
+Damage Score	Severity
+0–25	LOW
+26–60	MEDIUM
+61–100	HIGH
 
----
+⸻
 
-## Example Output
+Output Information
 
-The system provides:
+StreetScan generates:
 
-- Road Damage Score
-- Severity Level
-- Defect Visualisation
-- Risk Assessment
-- Maintenance Recommendation
+* Road Damage Score
+* Severity Level
+* Defect Visualisation
+* Infrastructure Risk Assessment
+* Estimated Damaged Area
+* Estimated Repair Cost
+* Recommended Repair Method
+* Recommended Repair Material
+* Driver Recommendations
+* Municipal Maintenance Recommendations
+* Inspection Report
 
----
+⸻
 
-## Potential Applications
+Potential Applications
 
-- Road infrastructure monitoring
-- Municipal maintenance planning
-- Smart city initiatives
-- Transportation safety analysis
-- Infrastructure inspection support
+* Municipal road maintenance planning
+* Smart city infrastructure management
+* Road safety monitoring
+* Transportation infrastructure assessment
+* Infrastructure inspection support
+* Public works prioritisation
 
----
+⸻
 
-## Future Improvements
+Future Development
 
-- Machine Learning-based defect classification
-- Real-time video analysis
-- GPS integration
-- Automated maintenance prioritisation
-- Cloud deployment
-- Mobile application support
+* Machine learning-based defect classification
+* YOLO road defect detection
+* GPS integration
+* Real-time road monitoring
+* Cloud deployment
+* Mobile application
+* Municipality dashboard integration
+* Predictive maintenance analytics
 
----
+⸻
 
-## Author
+Installation
 
-Developed as part of the SmartScape Hackathon Project.
+pip install -r requirements.txt
+streamlit run app.py
 
-StreetScan demonstrates how computer vision can assist in road infrastructure monitoring and maintenance decision-making.
+⸻
 
+Author
+
+Developed for the SmartScape AI Smart City Hackathon.
+
+StreetScan demonstrates how AI-assisted computer vision can support road infrastructure assessment, maintenance planning, and smart city decision-making.
